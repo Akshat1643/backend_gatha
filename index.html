@@ -342,6 +342,188 @@ details.quiz p{color:var(--text2);font-size:13.5px;}
 </div>
 
 
+<!-- ════════════ PART 0 — GIT & GITHUB ════════════ -->
+<div class="part" id="part-gitgithub"><div class="part-no">Part 0</div><h2>Git &amp; GitHub</h2><p>Version control, branching, pull requests, and the flow from local code to the cloud.</p><div class="part-secs"><a href="#gitgithub">00 Git &amp; GitHub</a></div></div>
+
+<!-- ── Git & GitHub — version control and collaboration ── -->
+<div class="section" id="gitgithub">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#7c6af71a;">🧠</div>
+    <div><h2><span class="sec-num">00</span>Git &amp; GitHub — What They Are and How They Work</h2><div class="sec-sub">Version control, branches, remote repositories, pull requests, and the real developer workflow</div></div>
+    <span class="sec-badge" style="background:#7c6af71a;color:#c4b5fd;">Git &amp; GitHub</span>
+  </div>
+
+  <div class="simple">
+    <div class="simple-h">🧒 In simple words</div>
+    <p><strong>Git</strong> is a tool that tracks every change in your project. It lets you save versions, go back in time, and work on different features without breaking the main code. <strong>GitHub</strong> is a cloud platform where you store your Git repositories online so people can collaborate, review code and deploy projects.</p>
+    <p class="analogy"><strong>Real-life analogy:</strong> Git is like an auto-saving history book for a project. Every time you make a meaningful edit, you create a new checkpoint. GitHub is the shared cloud library where your team stores and shares that book.</p>
+    <p class="remember"><strong>Remember:</strong> Git = local version control. GitHub = online hosting and collaboration. <code>git commit</code> saves a version locally; <code>git push</code> sends it to GitHub.</p>
+  </div>
+
+  <div class="card">
+    <h3>What Is Git?</h3>
+    <p>Git is a <strong>distributed version control system</strong>. That means every developer has a complete copy of the project history on their machine. You can create branches, commit changes, merge them, and restore previous versions without losing work.</p>
+    <div class="tbl"><table>
+      <tr><th>Git concept</th><th>What it means</th><th>Example</th></tr>
+      <tr><td><strong>Repository</strong></td><td>The project folder + full history</td><td><code>my-backend-api</code></td></tr>
+      <tr><td><strong>Commit</strong></td><td>A saved checkpoint with a message</td><td><code>git commit -m "Add login API"</code></td></tr>
+      <tr><td><strong>Branch</strong></td><td>An isolated line of work</td><td><code>feature/login</code></td></tr>
+      <tr><td><strong>Merge</strong></td><td>Combine a branch into another branch</td><td><code>main</code> + <code>feature/login</code></td></tr>
+      <tr><td><strong>Remote</strong></td><td>The online GitHub version</td><td><code>origin</code></td></tr>
+      <tr><td><strong>Pull / Push</strong></td><td>Download or upload changes</td><td><code>git pull</code>, <code>git push</code></td></tr>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>What Is GitHub?</h3>
+    <p>GitHub is a platform built around Git. It gives you a cloud place to host repositories, track issues, review pull requests, run CI/CD, and collaborate with teammates or open source contributors.</p>
+    <div class="compare">
+      <div class="compare-col good">
+        <h4>✅ Git</h4>
+        <ul>
+          <li>Tracks local history</li>
+          <li>Creates branches</li>
+          <li>Stores commits on your machine</li>
+          <li>Works offline</li>
+        </ul>
+      </div>
+      <div class="compare-col good">
+        <h4>✅ GitHub</h4>
+        <ul>
+          <li>Hosts remote repository online</li>
+          <li>Lets teams review code</li>
+          <li>Provides pull requests and issues</li>
+          <li>Connects with deployment tools and automation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>How the Git + GitHub Flow Works</h3>
+    <div class="flow">
+      <div class="fbox">Local code</div><span class="farr">→</span>
+      <div class="fbox">git checkout -b feature/x</div><span class="farr">→</span>
+      <div class="fbox">git add</div><span class="farr">→</span>
+      <div class="fbox">git commit</div><span class="farr">→</span>
+      <div class="fbox">git push</div><span class="farr">→</span>
+      <div class="fbox">GitHub</div><span class="farr">→</span>
+      <div class="fbox">Pull Request</div><span class="farr">→</span>
+      <div class="fbox" style="border-color:#34d399;color:#34d399;">Merge to main ✅</div>
+    </div>
+    <p>This is the normal developer workflow in teams: work on a branch, commit often, push to GitHub, open a PR, review, then merge into the main branch.</p>
+  </div>
+
+  <div class="card">
+    <h3>How to Create a New Branch and Connect It to Your Local Code</h3>
+    <p>A branch lets you work on a feature without disturbing the main project. In real projects, <code>main</code> or <code>master</code> is the stable branch and feature work happens on separate branches.</p>
+    <pre><span class="c"># 1. Go into your project</span>
+<span class="fn">cd</span> my-project
+
+<span class="c"># 2. Check current branch</span>
+<span class="fn">git</span> branch
+
+<span class="c"># 3. Create and switch to a new branch</span>
+<span class="fn">git</span> checkout -b feature/login
+<span class="c"># or the newer version:</span>
+<span class="fn">git</span> switch -c feature/login
+
+<span class="c"># 4. Make your changes</span>
+<span class="c"># edit files...</span>
+
+<span class="c"># 5. Save changes to staging area</span>
+<span class="fn">git</span> add .
+
+<span class="c"># 6. Commit your work</span>
+<span class="fn">git</span> commit -m <span class="s">"Add user login feature"</span>
+
+<span class="c"># 7. Push to GitHub on your branch</span>
+<span class="fn">git</span> push -u origin feature/login</pre>
+    <div class="tip info"><span class="ti">💡</span><div><strong>Why <code>-u</code>?</strong> It sets the upstream tracking relationship between your local branch and the remote branch. After that, you can simply run <code>git push</code> in the future.</div></div>
+  </div>
+
+  <div class="card">
+    <h3>How to Connect a Local Project to GitHub</h3>
+    <p>If your project is already on your laptop and you want to upload it to GitHub, do this once.</p>
+    <pre><span class="c"># Initialize Git in the project</span>
+<span class="fn">git</span> init
+
+<span class="c"># Check the status</span>
+<span class="fn">git</span> status
+
+<span class="c"># Connect to a GitHub repository</span>
+<span class="fn">git</span> remote add origin https://github.com/your-username/your-repo.git
+
+<span class="c"># Or if you already cloned a repo</span>
+<span class="fn">git</span> remote -v
+
+<span class="c"># Push the branch to GitHub</span>
+<span class="fn">git</span> branch -M main
+<span class="fn">git</span> push -u origin main</pre>
+    <p>After that, your local code is linked to GitHub. Any new commits you make can be pushed, and teammates can clone or pull the repository from the cloud.</p>
+  </div>
+
+  <div class="card">
+    <h3>Most Used Git and GitHub Commands</h3>
+    <div class="tbl"><table>
+      <tr><th>Command</th><th>Purpose</th></tr>
+      <tr><td><code>git clone &lt;url&gt;</code></td><td>Download an existing GitHub project to your local machine</td></tr>
+      <tr><td><code>git status</code></td><td>See modified, staged, and untracked files</td></tr>
+      <tr><td><code>git add .</code></td><td>Stage all current changes</td></tr>
+      <tr><td><code>git add &lt;file&gt;</code></td><td>Stage only selected files</td></tr>
+      <tr><td><code>git commit -m "..."</code></td><td>Create a checkpoint with a clear message</td></tr>
+      <tr><td><code>git branch</code></td><td>List all branches</td></tr>
+      <tr><td><code>git checkout -b feature/name</code></td><td>Create and switch to a new branch</td></tr>
+      <tr><td><code>git switch main</code></td><td>Move back to the main branch</td></tr>
+      <tr><td><code>git merge feature/name</code></td><td>Merge a feature branch into the current branch</td></tr>
+      <tr><td><code>git pull origin main</code></td><td>Download latest changes from GitHub</td></tr>
+      <tr><td><code>git push -u origin feature/name</code></td><td>Upload your branch to GitHub</td></tr>
+      <tr><td><code>git fetch</code></td><td>Check for remote changes without merging them</td></tr>
+      <tr><td><code>git log</code></td><td>See the project commit history</td></tr>
+      <tr><td><code>git stash</code></td><td>Temporarily save local work without committing</td></tr>
+      <tr><td><code>git reset --hard HEAD~1</code></td><td>Delete the last commit (use carefully)</td></tr>
+      <tr><td><code>git remote -v</code></td><td>View your remote GitHub connections</td></tr>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>Daily Team Workflow</h3>
+    <pre><span class="c"># 1. Start from the latest main</span>
+<span class="fn">git</span> checkout main
+<span class="fn">git</span> pull origin main
+
+<span class="c"># 2. Create a feature branch</span>
+<span class="fn">git</span> checkout -b feature/order-validation
+
+<span class="c"># 3. Make changes, stage, commit</span>
+<span class="fn">git</span> add .
+<span class="fn">git</span> commit -m <span class="s">"Validate order before payment"</span>
+
+<span class="c"># 4. Push to GitHub</span>
+<span class="fn">git</span> push -u origin feature/order-validation
+
+<span class="c"># 5. Open PR on GitHub, review, then merge</span>
+<span class="c"># After merge, update your local main branch</span>
+<span class="fn">git</span> checkout main
+<span class="fn">git</span> pull origin main</pre>
+    <p>That is the real-world flow used by software teams. Branches keep work isolated, code reviews reduce bugs, and GitHub centralizes everything in one place.</p>
+  </div>
+
+  <div class="card">
+    <h3>Good Git Practices</h3>
+    <ul>
+      <li>Commit in small, meaningful units</li>
+      <li>Use clear commit messages like <code>Add login validation</code> or <code>Fix payment timeout bug</code></li>
+      <li>Never push directly to <code>main</code> without review when working in a team</li>
+      <li>Always pull the latest version before starting new work</li>
+      <li>Use branches for each feature or bug fix</li>
+      <li>Keep secrets and environment files out of Git</li>
+    </ul>
+  </div>
+
+  <a class="nextup" href="#jsbasics"><span class="nx-label">Next up →</span><span class="nx-title">01 · JavaScript — Variables, Data Types &amp; Operators</span><span class="nx-why">Git gives you structure and history; JavaScript gives your backend logic its actual behavior.</span></a>
+</div>
+
 <!-- ════════════ PART 1 — JAVASCRIPT FOUNDATIONS ════════════ -->
 <div class="part" id="part-1"><div class="part-no">Part 1</div><h2>JavaScript Foundations</h2><p>The language itself: values, copying, functions, closures, classes and OOP. Everything later in the guide is built from these pieces.</p><div class="part-secs"><a href="#jsbasics">01 JS Basics</a><a href="#copyconcept">02 Copying</a><a href="#jsfuncs">03 Functions</a><a href="#jsadv">04 Closures</a><a href="#oop">05 OOP</a></div></div>
 
